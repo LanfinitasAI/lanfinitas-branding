@@ -1,61 +1,106 @@
-# lanfinitas-fonts
-official fonts
+# lanfinitas-branding
 
-# Lanfinitas Web Fonts
-
-This repository hosts the official Lanfinitas / CircuLab web fonts bundle in WOFF2 format, plus a shared CSS stylesheet for easy embedding.
-
-All fonts are optimized for web usage and intended to be consumed via GitHub Pages from this repo.
+Official brand assets, design tokens, and web fonts for Lanfinitas AI / CircuLab.
 
 ---
 
-## Structure
+## What's in this repo
 
 ```text
-lanfinitas-fonts/
+lanfinitas-branding/
 ├── fonts/
 │   ├── RamaGothicC-*.woff2
 │   ├── RamaGothicE-*.woff2
 │   ├── RamaGothicM-*.woff2
 │   ├── SpaceMono-*.woff2
 │   └── stylesheet.css
+├── design-tokens.md
 └── README.md
+```
 
-fonts/stylesheet.css aggregates all @font-face declarations and serves as the single entry point for external sites and tools.
+| File | Purpose |
+|------|---------|
+| `fonts/stylesheet.css` | Web font entry point — embed in any HTML |
+| `design-tokens.md` | Full colour system, typography scale, component patterns |
 
-Usage (HTML)
+---
 
-Once GitHub Pages is enabled for this repository, you can include the fonts in any HTML page via:
+## Font Usage
 
-<link rel="stylesheet" href="https://lanfinitasai.github.io/lanfinitas-fonts/fonts/stylesheet.css">
-
+```html
+<link rel="stylesheet" href="https://lanfinitasai.github.io/lanfinitas-branding/fonts/stylesheet.css">
+```
 
 Then apply the brand font stack:
 
-<body>
-  <h1 style="font-family: 'Rama Gothic E', 'Rama Gothic M', 'Space Mono', system-ui, sans-serif;">
-    Lanfinitas Heading
-  </h1>
-  <p>
-    Body text will render with the official Lanfinitas type system, falling back to system fonts if needed.
-  </p>
-</body>
+```css
+font-family: 'Rama Gothic E', 'Rama Gothic M', 'Space Mono', system-ui, sans-serif;
+```
 
+---
 
-Functional expectation:
-If the stylesheet URL is reachable and the browser supports WOFF2 (all modern browsers do), headings and body text will render using Rama Gothic / Space Mono instead of the default system font.
+## Design Tokens
 
-Usage with Claude Skills and Agents
+See [`design-tokens.md`](./design-tokens.md) for the full specification.
 
-Claude Skills can emit HTML templates that include:
+Quick reference — CSS variables:
 
-<link rel="stylesheet" href="https://lanfinitasai.github.io/lanfinitas-fonts/fonts/stylesheet.css">
+```css
+:root {
+  /* Backgrounds */
+  --bg-void:      #000000;   /* pure black */
+  --bg-base:      #0d0d0d;   /* main app background */
+  --bg-surface:   #1a1a1a;   /* panels, sidebars, cards */
+  --bg-raised:    #242424;   /* inputs, hover states */
+  --bg-overlay:   #2e2e2e;   /* tooltips, dropdowns */
 
+  /* Text */
+  --text-primary:   #f0f0f0;
+  --text-secondary: #b0b0b0;
+  --text-tertiary:  #6e6e6e;
+  --text-ghost:     #3a3a3a;
 
-This ensures that any web-based rendering of those outputs (internal tools, static sites, PDF pipelines using a headless browser, etc.) consistently uses the Lanfinitas brand fonts.
+  /* Borders */
+  --border-strong:  #3a3a3a;
+  --border-subtle:  #242424;
 
-License
+  /* Accents */
+  --accent-white:  #ffffff;
+  --accent-red:    #cc0000;
+}
+```
 
-Fonts and CSS in this repository are provided solely for Lanfinitas / CircuLab branded materials and approved collaborators.
+---
 
-If you are not part of the Lanfinitas ecosystem, please request permission before using these assets.
+## Usage with Claude Skills and Agents
+
+Claude Skills can emit HTML that includes both the font stylesheet and token definitions:
+
+```html
+<link rel="stylesheet" href="https://lanfinitasai.github.io/lanfinitas-branding/fonts/stylesheet.css">
+```
+
+This ensures consistent typography and colour across all web-based outputs — internal tools, static sites, PDF pipelines, and agent-generated documents.
+
+---
+
+## Hosted URLs (GitHub Pages)
+
+| Asset | URL |
+|-------|-----|
+| Font stylesheet | `https://lanfinitasai.github.io/lanfinitas-branding/fonts/stylesheet.css` |
+| Design tokens | `https://lanfinitasai.github.io/lanfinitas-branding/design-tokens.md` |
+
+---
+
+## Note on repo rename
+
+This repository was previously named `lanfinitas-fonts`. It has been expanded to cover the full Lanfinitas brand system including design tokens, colour scale, and typography rules. GitHub automatically redirects old URLs for 12 months — update any hardcoded references to use the new path.
+
+---
+
+## License
+
+Assets in this repository are provided solely for Lanfinitas AI / CircuLab branded materials and approved collaborators. Request permission before using outside the Lanfinitas ecosystem.
+
+*Lanfinitas AI · lanfinitasai.com · © 2026 All rights reserved*
